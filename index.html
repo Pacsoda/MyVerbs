@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>My Verbs</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta name="referrer" content="no-referrer">
+  <style>
+    /* CSS */
+    .button-17 {
+      align-items: center;
+      appearance: none;
+      background-color: #fff;
+      border-radius: 24px;
+      border-style: none;
+      box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+      box-sizing: border-box;
+      color: #3c4043;
+      cursor: pointer;
+      display: inline-flex;
+      fill: currentcolor;
+      font-family: "Google Sans", Roboto, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      height: 48px;
+      justify-content: center;
+      letter-spacing: .25px;
+      line-height: normal;
+      max-width: 100%;
+      overflow: visible;
+      padding: 2px 24px;
+      position: relative;
+      text-align: center;
+      text-transform: none;
+      transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: auto;
+      will-change: transform, opacity;
+      z-index: 0;
+    }
+
+    .button-17:hover {
+      background: #F6F9FE;
+      color: #174ea6;
+    }
+
+    .button-17:active {
+      box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+      outline: none;
+    }
+
+    .button-17:focus {
+      outline: none;
+      border: 2px solid #4285f4;
+    }
+
+    .button-17:not(:disabled) {
+      box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    }
+
+    .button-17:not(:disabled):hover {
+      box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
+    }
+
+    .button-17:not(:disabled):focus {
+      box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    }
+
+    .button-17:not(:disabled):active {
+      box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
+    }
+
+    .button-17:disabled {
+      box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    }
+
+    hr {
+      width: 30%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p id="verbs" style="text-align: center; margin-top: 50px;"></p>
+  <audio controls id="tts-audio" hidden />
+
+  <script>
+    const playTTS = (text, lang) => {
+      // Get the audio element
+      const audioEl = document.getElementById('tts-audio');
+      const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&client=tw-ob&q=${text}`;
+
+      // add the sound to the audio element
+      audioEl.src = url;
+
+      //For auto playing the sound
+      audioEl.play();
+    };
+
+    const verbs = [
+      {
+        "baseForm": "begin",
+        "simplePast": "began",
+        "pastParticiple": "begun",
+        "presentParticiple": "beginning",
+        "spanish": "comenzar"
+      },
+      {
+        "baseForm": "drink",
+        "simplePast": "drank",
+        "pastParticiple": "drunk",
+        "presentParticiple": "drinking",
+        "spanish": "beber (tomar)"
+      },
+      {
+        "baseForm": "ring",
+        "simplePast": "rang",
+        "pastParticiple": "rung",
+        "presentParticiple": "ringing",
+        "spanish": "timbrar (de telefono)"
+      },
+      {
+        "baseForm": "run",
+        "simplePast": "rang",
+        "pastParticiple": "run",
+        "presentParticiple": "running",
+        "spanish": "correr"
+      },
+      {
+        "baseForm": "shrink",
+        "simplePast": "shrank",
+        "pastParticiple": "shrunk",
+        "presentParticiple": "shrinking",
+        "spanish": "encoger"
+      },
+      {
+        "baseForm": "sing",
+        "simplePast": "sang",
+        "pastParticiple": "sung",
+        "presentParticiple": "singing",
+        "spanish": "cantar"
+      },
+      {
+        "baseForm": "sting",
+        "simplePast": "stank",
+        "pastParticiple": "stunk",
+        "presentParticiple": "stinking",
+        "spanish": "apestar"
+      },
+      {
+        "baseForm": "swim",
+        "simplePast": "swam",
+        "pastParticiple": "swum",
+        "presentParticiple": "swimming",
+        "spanish": "nadar"
+      },
+      {
+        "baseForm": "break",
+        "simplePast": "broke",
+        "pastParticiple": "broken",
+        "presentParticiple": "breaking",
+        "spanish": "romper - quebrar"
+      },
+      {
+        "baseForm": "choose",
+        "simplePast": "chose",
+        "pastParticiple": "chose",
+        "presentParticiple": "choosing",
+        "spanish": "elegir - escoger"
+      },
+      {
+        "baseForm": "drive",
+        "simplePast": "drove",
+        "pastParticiple": "driven",
+        "presentParticiple": "driving",
+        "spanish": "conducir (manejar)"
+      },
+      {
+        "baseForm": "forget",
+        "simplePast": "forget",
+        "pastParticiple": "forgotten",
+        "presentParticiple": "forgetting",
+        "spanish": "olvidar"
+      },
+      {
+        "baseForm": "freeze",
+        "simplePast": "froze",
+        "pastParticiple": "frozen",
+        "presentParticiple": "freezing",
+        "spanish": "congelar"
+      },
+      {
+        "baseForm": "get",
+        "simplePast": "got",
+        "pastParticiple": "gotten",
+        "presentParticiple": "getting",
+        "spanish": "obtener - conseguir"
+      },
+      {
+        "baseForm": "ride",
+        "simplePast": "rode",
+        "pastParticiple": "ridden",
+        "presentParticiple": "riding",
+        "spanish": "montar"
+      },
+      {
+        "baseForm": "speak",
+        "simplePast": "spoke",
+        "pastParticiple": "spoken",
+        "presentParticiple": "speaking",
+        "spanish": "hablar"
+      },
+      {
+        "baseForm": "steal",
+        "simplePast": "stole",
+        "pastParticiple": "stolen",
+        "presentParticiple": "stealing",
+        "spanish": "hutar"
+      },
+      {
+        "baseForm": "take",
+        "simplePast": "took",
+        "pastParticiple": "taken",
+        "presentParticiple": "taking",
+        "spanish": "llevar - tomar(no de beber)"
+      },
+      {
+        "baseForm": "wake up",
+        "simplePast": "woke up",
+        "pastParticiple": "woken up",
+        "presentParticiple": "waking up",
+        "spanish": "despertarse"
+      },
+      {
+        "baseForm": "write",
+        "simplePast": "wrote",
+        "pastParticiple": "written",
+        "presentParticiple": "writing",
+        "spanish": "escribir"
+      },
+      {
+        "baseForm": "bring",
+        "simplePast": "brought",
+        "pastParticiple": "brought",
+        "presentParticiple": "bringing",
+        "spanish": "traer"
+      },
+      {
+        "baseForm": "buy",
+        "simplePast": "bought",
+        "pastParticiple": "bought",
+        "presentParticiple": "buying",
+        "spanish": "comprar"
+      },
+      {
+        "baseForm": "catch",
+        "simplePast": "caught",
+        "pastParticiple": "caught",
+        "presentParticiple": "catching",
+        "spanish": "atrapar"
+      },
+      {
+        "baseForm": "fight",
+        "simplePast": "fought",
+        "pastParticiple": "fought",
+        "presentParticiple": "fighting",
+        "spanish": "pelear"
+      },
+      {
+        "baseForm": "teach",
+        "simplePast": "taught",
+        "pastParticiple": "taught",
+        "presentParticiple": "teaching",
+        "spanish": "enseñar"
+      },
+      {
+        "baseForm": "think",
+        "simplePast": "thought",
+        "pastParticiple": "thought",
+        "presentParticiple": "thinking",
+        "spanish": "pensar"
+      },
+      {
+        "baseForm": "bite",
+        "simplePast": "bit",
+        "pastParticiple": "bitten",
+        "presentParticiple": "biting",
+        "spanish": "morder"
+      },
+      {
+        "baseForm": "eat",
+        "simplePast": "ate",
+        "pastParticiple": "eaten",
+        "presentParticiple": "eating",
+        "spanish": "comer"
+      },
+      {
+        "baseForm": "fall",
+        "simplePast": "fell",
+        "pastParticiple": "fallen",
+        "presentParticiple": "falling",
+        "spanish": "caer"
+      },
+      {
+        "baseForm": "forgive",
+        "simplePast": "forgave",
+        "pastParticiple": "forgiven",
+        "presentParticiple": "forgiving",
+        "spanish": "perdonar"
+      },
+      {
+        "baseForm": "give",
+        "simplePast": "gave",
+        "pastParticiple": "given",
+        "presentParticiple": "giving",
+        "spanish": "regalar - dar"
+      },
+      {
+        "baseForm": "hide",
+        "simplePast": "hid",
+        "pastParticiple": "hidden",
+        "presentParticiple": "hiding",
+        "spanish": "seconder"
+      },
+      {
+        "baseForm": "be ( am/are/is)",
+        "simplePast": "was/were",
+        "pastParticiple": "been",
+        "presentParticiple": "being",
+        "spanish": "ser - estar"
+      },
+      {
+        "baseForm": "become",
+        "simplePast": "became",
+        "pastParticiple": "become",
+        "presentParticiple": "becoming",
+        "spanish": "llegar a ser - convertirse"
+      },
+      {
+        "baseForm": "come",
+        "simplePast": "came",
+        "pastParticiple": "come",
+        "presentParticiple": "coming",
+        "spanish": "venir"
+      },
+      {
+        "baseForm": "do",
+        "simplePast": "did",
+        "pastParticiple": "done",
+        "presentParticiple": "doing",
+        "spanish": "hacer"
+      },
+      {
+        "baseForm": "go",
+        "simplePast": "went",
+        "pastParticiple": "gone",
+        "presentParticiple": "going",
+        "spanish": "ir"
+      },
+      {
+        "baseForm": "see",
+        "simplePast": "saw",
+        "pastParticiple": "seen",
+        "presentParticiple": "seeing",
+        "spanish": "ver - consultar con"
+      },
+      {
+        "baseForm": "wear",
+        "simplePast": "wore",
+        "pastParticiple": "worn",
+        "presentParticiple": "wearing",
+        "spanish": "vestir - usar"
+      },
+      {
+        "baseForm": "bet",
+        "simplePast": "bet",
+        "pastParticiple": "bet",
+        "presentParticiple": "betting",
+        "spanish": "apostar"
+      },
+      {
+        "baseForm": "cut",
+        "simplePast": "cut",
+        "pastParticiple": "cut",
+        "presentParticiple": "cutting",
+        "spanish": "cortar"
+      },
+      {
+        "baseForm": "hit",
+        "simplePast": "hit",
+        "pastParticiple": "hit",
+        "presentParticiple": "hitting",
+        "spanish": "golpear"
+      },
+      {
+        "baseForm": "hurt",
+        "simplePast": "hurt",
+        "pastParticiple": "hurt",
+        "presentParticiple": "hurting",
+        "spanish": "herir - permitir"
+      },
+      {
+        "baseForm": "let",
+        "simplePast": "let",
+        "pastParticiple": "let",
+        "presentParticiple": "letting",
+        "spanish": "dejar - permitir"
+      },
+      {
+        "baseForm": "put",
+        "simplePast": "put",
+        "pastParticiple": "put",
+        "presentParticiple": "putting",
+        "spanish": "poner"
+      },
+      {
+        "baseForm": "quit",
+        "simplePast": "quit",
+        "pastParticiple": "quit",
+        "presentParticiple": "quitting",
+        "spanish": "dejar de - abandonar"
+      },
+      {
+        "baseForm": "read",
+        "simplePast": "read",
+        "pastParticiple": "read",
+        "presentParticiple": "reading",
+        "spanish": "leer"
+      },
+      {
+        "baseForm": "set",
+        "simplePast": "set",
+        "pastParticiple": "set",
+        "presentParticiple": "setting",
+        "spanish": "colocar - ajustar"
+      },
+      {
+        "baseForm": "bleed",
+        "simplePast": "bled",
+        "pastParticiple": "bled",
+        "presentParticiple": "bleeding",
+        "spanish": "sangrar"
+      },
+      {
+        "baseForm": "build",
+        "simplePast": "built",
+        "pastParticiple": "built",
+        "presentParticiple": "building",
+        "spanish": "construir"
+      },
+      {
+        "baseForm": "feel",
+        "simplePast": "felt",
+        "pastParticiple": "felt",
+        "presentParticiple": "feeling",
+        "spanish": "sentir (se)"
+      },
+      {
+        "baseForm": "find",
+        "simplePast": "found",
+        "pastParticiple": "found",
+        "presentParticiple": "finding",
+        "spanish": "encontrar"
+      },
+      {
+        "baseForm": "hang",
+        "simplePast": "hung",
+        "pastParticiple": "hung",
+        "presentParticiple": "handing",
+        "spanish": "colgar"
+      },
+      {
+        "baseForm": "have",
+        "simplePast": "had",
+        "pastParticiple": "had",
+        "presentParticiple": "having",
+        "spanish": "tener"
+      },
+      {
+        "baseForm": "haer",
+        "simplePast": "heard",
+        "pastParticiple": "heard",
+        "presentParticiple": "hearing",
+        "spanish": "oir"
+      },
+      {
+        "baseForm": "hold",
+        "simplePast": "held",
+        "pastParticiple": "held",
+        "presentParticiple": "holding",
+        "spanish": "sostener - agarrar"
+      },
+      {
+        "baseForm": "keep",
+        "simplePast": "kept",
+        "pastParticiple": "kept",
+        "presentParticiple": "keeping",
+        "spanish": "conservar - seguir"
+      },
+      {
+        "baseForm": "leave",
+        "simplePast": "left",
+        "pastParticiple": "left",
+        "presentParticiple": "leaving",
+        "spanish": "dejar - irse"
+      },
+      {
+        "baseForm": "lend",
+        "simplePast": "lent",
+        "pastParticiple": "lent",
+        "presentParticiple": "lending",
+        "spanish": "dar prestado"
+      },
+      {
+        "baseForm": "lose",
+        "simplePast": "lost",
+        "pastParticiple": "lost",
+        "presentParticiple": "losing",
+        "spanish": "perder"
+      },
+      {
+        "baseForm": "make",
+        "simplePast": "made",
+        "pastParticiple": "made",
+        "presentParticiple": "making",
+        "spanish": "hacer (construir - preparar)"
+      },
+      {
+        "baseForm": "meet",
+        "simplePast": "met",
+        "pastParticiple": "met",
+        "presentParticiple": "meeting",
+        "spanish": "verse - conocerse (x1ra vez)"
+      },
+      {
+        "baseForm": "pay",
+        "simplePast": "paid",
+        "pastParticiple": "paid",
+        "presentParticiple": "paying",
+        "spanish": "pagar"
+      },
+      {
+        "baseForm": "sell",
+        "simplePast": "sold",
+        "pastParticiple": "sold",
+        "presentParticiple": "selling",
+        "spanish": "vender"
+      },
+      {
+        "baseForm": "send",
+        "simplePast": "sent",
+        "pastParticiple": "sent",
+        "presentParticiple": "sending",
+        "spanish": "enviar"
+      },
+      {
+        "baseForm": "sit",
+        "simplePast": "sat",
+        "pastParticiple": "sat",
+        "presentParticiple": "sitting",
+        "spanish": "sentar (se)"
+      },
+      {
+        "baseForm": "sleep",
+        "simplePast": "slept",
+        "pastParticiple": "slept",
+        "presentParticiple": "sleeping",
+        "spanish": "dormir"
+      },
+      {
+        "baseForm": "spend",
+        "simplePast": "spent",
+        "pastParticiple": "spent",
+        "presentParticiple": "spending",
+        "spanish": "gastar - pasar tiempo"
+      },
+      {
+        "baseForm": "stand",
+        "simplePast": "stood",
+        "pastParticiple": "stood",
+        "presentParticiple": "standing",
+        "spanish": "pararse"
+      },
+      {
+        "baseForm": "sweep",
+        "simplePast": "swept",
+        "pastParticiple": "swept",
+        "presentParticiple": "sweeping",
+        "spanish": "barrer"
+      },
+      {
+        "baseForm": "tell",
+        "simplePast": "told",
+        "pastParticiple": "told",
+        "presentParticiple": "telling",
+        "spanish": "decir"
+      },
+      {
+        "baseForm": "understand",
+        "simplePast": "understood",
+        "pastParticiple": "understood",
+        "presentParticiple": "understanding",
+        "spanish": "entender - comprender"
+      },
+      {
+        "baseForm": "win",
+        "simplePast": "won",
+        "pastParticiple": "won",
+        "presentParticiple": "winning",
+        "spanish": "ganar (competencia - premio)"
+      },
+      {
+        "baseForm": "draw",
+        "simplePast": "drew",
+        "pastParticiple": "drawn",
+        "presentParticiple": "drawing",
+        "spanish": "dibujar"
+      },
+      {
+        "baseForm": "fly",
+        "simplePast": "flew",
+        "pastParticiple": "flown",
+        "presentParticiple": "flying",
+        "spanish": "volar"
+      },
+      {
+        "baseForm": "grow",
+        "simplePast": "grew",
+        "pastParticiple": "grown",
+        "presentParticiple": "growing",
+        "spanish": "crecer - cultivar"
+      },
+      {
+        "baseForm": "know",
+        "simplePast": "knew",
+        "pastParticiple": "known",
+        "presentParticiple": "knowing",
+        "spanish": "saber - conocer"
+      },
+      {
+        "baseForm": "throw",
+        "simplePast": "threw",
+        "pastParticiple": "thrown",
+        "presentParticiple": "throwing",
+        "spanish": "lanzar - avanzar"
+      },
+      {
+        "baseForm": "look",
+        "simplePast": "looked",
+        "pastParticiple": "looked",
+        "presentParticiple": "looking",
+        "spanish": "mirar"
+      },
+      {
+        "baseForm": "love",
+        "simplePast": "loved",
+        "pastParticiple": "loved",
+        "presentParticiple": "loving",
+        "spanish": "amar - encantar"
+      },
+      {
+        "baseForm": "miss",
+        "simplePast": "missed",
+        "pastParticiple": "missed",
+        "presentParticiple": "missing",
+        "spanish": "extrañar - perder - errar"
+      },
+      {
+        "baseForm": "move",
+        "simplePast": "moved",
+        "pastParticiple": "moved",
+        "presentParticiple": "moving",
+        "spanish": "mover - mudarse"
+      },
+      {
+        "baseForm": "need",
+        "simplePast": "needed",
+        "pastParticiple": "needed",
+        "presentParticiple": "needing",
+        "spanish": "necesitar"
+      },
+      {
+        "baseForm": "offer",
+        "simplePast": "offered",
+        "pastParticiple": "offered",
+        "presentParticiple": "offering",
+        "spanish": "ofrecer"
+      },
+      {
+        "baseForm": "open",
+        "simplePast": "opened",
+        "pastParticiple": "opened",
+        "presentParticiple": "opening",
+        "spanish": "abrir"
+      },
+      {
+        "baseForm": "order",
+        "simplePast": "ordered",
+        "pastParticiple": "ordered",
+        "presentParticiple": "ordering",
+        "spanish": "ordenar - pedir"
+      },
+      {
+        "baseForm": "plant",
+        "simplePast": "planted",
+        "pastParticiple": "planted",
+        "presentParticiple": "planting",
+        "spanish": "plantar"
+      },
+      {
+        "baseForm": "play",
+        "simplePast": "played",
+        "pastParticiple": "played",
+        "presentParticiple": "playing",
+        "spanish": "jugar"
+      },
+      {
+        "baseForm": "point",
+        "simplePast": "pointed",
+        "pastParticiple": "pointed",
+        "presentParticiple": "pointing",
+        "spanish": "señalar"
+      },
+      {
+        "baseForm": "practise",
+        "simplePast": "practised",
+        "pastParticiple": "practised",
+        "presentParticiple": "practising",
+        "spanish": "practicar"
+      },
+      {
+        "baseForm": "push",
+        "simplePast": "pushed",
+        "pastParticiple": "pushed",
+        "presentParticiple": "pushing",
+        "spanish": "empujar"
+      },
+      {
+        "baseForm": "rain",
+        "simplePast": "rained",
+        "pastParticiple": "rained",
+        "presentParticiple": "raining",
+        "spanish": "llover"
+      },
+      {
+        "baseForm": "remember",
+        "simplePast": "remembered",
+        "pastParticiple": "remembered",
+        "presentParticiple": "remembering",
+        "spanish": "recordar"
+      },
+      {
+        "baseForm": "remove",
+        "simplePast": "removed",
+        "pastParticiple": "removed",
+        "presentParticiple": "removing",
+        "spanish": "remover - quitar"
+      },
+      {
+        "baseForm": "rent",
+        "simplePast": "rented",
+        "pastParticiple": "rented",
+        "presentParticiple": "renting",
+        "spanish": "rentar"
+      },
+      {
+        "baseForm": "repeat",
+        "simplePast": "repeated",
+        "pastParticiple": "repeated",
+        "presentParticiple": "repeating",
+        "spanish": "repetir"
+      },
+      {
+        "baseForm": "rob",
+        "simplePast": "robbed",
+        "pastParticiple": "robbed",
+        "presentParticiple": "robbing",
+        "spanish": "robar"
+      },
+      {
+        "baseForm": "show",
+        "simplePast": "showed",
+        "pastParticiple": "showed",
+        "presentParticiple": "showing",
+        "spanish": "mostrar"
+      },
+      {
+        "baseForm": "smoke",
+        "simplePast": "smoked",
+        "pastParticiple": "smoked",
+        "presentParticiple": "smoking",
+        "spanish": "fumar"
+      },
+      {
+        "baseForm": "start",
+        "simplePast": "started",
+        "pastParticiple": "started",
+        "presentParticiple": "starting",
+        "spanish": "empezarna"
+      },
+      {
+        "baseForm": "stay",
+        "simplePast": "stayed",
+        "pastParticiple": "stayed",
+        "presentParticiple": "staying",
+        "spanish": "quedarse"
+      },
+      {
+        "baseForm": "stop",
+        "simplePast": "stopped",
+        "pastParticiple": "stopped",
+        "presentParticiple": "stopping",
+        "spanish": "parar - dejar de"
+      },
+      {
+        "baseForm": "study",
+        "simplePast": "studied",
+        "pastParticiple": "studied",
+        "presentParticiple": "studying",
+        "spanish": "estudiar"
+      },
+      {
+        "baseForm": "talk",
+        "simplePast": "talked",
+        "pastParticiple": "talked",
+        "presentParticiple": "talking",
+        "spanish": "platicar - hablar"
+      },
+      {
+        "baseForm": "touch",
+        "simplePast": "touched",
+        "pastParticiple": "touched",
+        "presentParticiple": "touching",
+        "spanish": "tocar"
+      },
+      {
+        "baseForm": "travel",
+        "simplePast": "traveled",
+        "pastParticiple": "traveled",
+        "presentParticiple": "traveling",
+        "spanish": "viajar"
+      },
+      {
+        "baseForm": "try",
+        "simplePast": "tried",
+        "pastParticiple": "tried",
+        "presentParticiple": "trying",
+        "spanish": "intentar"
+      },
+      {
+        "baseForm": "turn",
+        "simplePast": "turned",
+        "pastParticiple": "turned",
+        "presentParticiple": "turning",
+        "spanish": "voltear"
+      },
+      {
+        "baseForm": "use",
+        "simplePast": "used",
+        "pastParticiple": "used",
+        "presentParticiple": "using",
+        "spanish": "usar"
+      },
+      {
+        "baseForm": "visit",
+        "simplePast": "visited",
+        "pastParticiple": "visited",
+        "presentParticiple": "visiting",
+        "spanish": "visitar"
+      },
+      {
+        "baseForm": "wait",
+        "simplePast": "waited",
+        "pastParticiple": "waited",
+        "presentParticiple": "waiting",
+        "spanish": "esperar"
+      },
+      {
+        "baseForm": "walk",
+        "simplePast": "walked",
+        "pastParticiple": "walked",
+        "presentParticiple": "walking",
+        "spanish": "caminar"
+      },
+      {
+        "baseForm": "want",
+        "simplePast": "wanted",
+        "pastParticiple": "wanted",
+        "presentParticiple": "wanting",
+        "spanish": "querer (desear)"
+      },
+      {
+        "baseForm": "wash",
+        "simplePast": "washed",
+        "pastParticiple": "washed",
+        "presentParticiple": "washing",
+        "spanish": "lavar"
+      },
+      {
+        "baseForm": "watch",
+        "simplePast": "watched",
+        "pastParticiple": "watched",
+        "presentParticiple": "watching",
+        "spanish": "ver"
+      },
+      {
+        "baseForm": "wish",
+        "simplePast": "wished",
+        "pastParticiple": "wished",
+        "presentParticiple": "wishing",
+        "spanish": "desear (anhelar)"
+      },
+      {
+        "baseForm": "work",
+        "simplePast": "worked",
+        "pastParticiple": "worked",
+        "presentParticiple": "working",
+        "spanish": "tetrabajar (funcionar)"
+      },
+      {
+        "baseForm": "accept",
+        "simplePast": "accepted",
+        "pastParticiple": "accepted",
+        "presentParticiple": "accepting",
+        "spanish": "aceptar"
+      },
+      {
+        "baseForm": "add",
+        "simplePast": "added",
+        "pastParticiple": "added",
+        "presentParticiple": "adding",
+        "spanish": "agregar"
+      },
+      {
+        "baseForm": "arrive",
+        "simplePast": "arrived",
+        "pastParticiple": "arrived",
+        "presentParticiple": "arriving",
+        "spanish": "llegar"
+      },
+      {
+        "baseForm": "ask",
+        "simplePast": "asked",
+        "pastParticiple": "asked",
+        "presentParticiple": "asking",
+        "spanish": "preguntar - pedir"
+      },
+      {
+        "baseForm": "bake",
+        "simplePast": "baked",
+        "pastParticiple": "baked",
+        "presentParticiple": "baking",
+        "spanish": "hornear"
+      },
+      {
+        "baseForm": "borrow",
+        "simplePast": "borrowed",
+        "pastParticiple": "borrowed",
+        "presentParticiple": "borrowing",
+        "spanish": "tomar prestado"
+      },
+      {
+        "baseForm": "cancel",
+        "simplePast": "canceled",
+        "pastParticiple": "cancelled",
+        "presentParticiple": "canceling",
+        "spanish": "cancelar"
+      },
+      {
+        "baseForm": "change",
+        "simplePast": "changed",
+        "pastParticiple": "changed",
+        "presentParticiple": "changing",
+        "spanish": "cambiar"
+      },
+      {
+        "baseForm": "clean",
+        "simplePast": "cleaned",
+        "pastParticiple": "cleaned",
+        "presentParticiple": "cleaning",
+        "spanish": "liampiar"
+      },
+      {
+        "baseForm": "climb",
+        "simplePast": "climbed",
+        "pastParticiple": "climbed",
+        "presentParticiple": "climbing",
+        "spanish": "trepar - escalar"
+      },
+      {
+        "baseForm": "close",
+        "simplePast": "closed",
+        "pastParticiple": "closed",
+        "presentParticiple": "closing",
+        "spanish": "cerrar"
+      },
+      {
+        "baseForm": "consider",
+        "simplePast": "considered",
+        "pastParticiple": "considered",
+        "presentParticiple": "considering",
+        "spanish": "considerar"
+      },
+      {
+        "baseForm": "cook",
+        "simplePast": "cooked",
+        "pastParticiple": "cooked",
+        "presentParticiple": "cooking",
+        "spanish": "cocinar"
+      },
+      {
+        "baseForm": "count",
+        "simplePast": "counted",
+        "pastParticiple": "counted",
+        "presentParticiple": "counting",
+        "spanish": "contar"
+      },
+      {
+        "baseForm": "create",
+        "simplePast": "created",
+        "pastParticiple": "created",
+        "presentParticiple": "creating",
+        "spanish": "crear"
+      },
+      {
+        "baseForm": "cry",
+        "simplePast": "cried",
+        "pastParticiple": "cried",
+        "presentParticiple": "crying",
+        "spanish": "llorar"
+      },
+      {
+        "baseForm": "dance",
+        "simplePast": "danced",
+        "pastParticiple": "danced",
+        "presentParticiple": "dancing",
+        "spanish": "bailar"
+      },
+      {
+        "baseForm": "date",
+        "simplePast": "dated",
+        "pastParticiple": "dated",
+        "presentParticiple": "dating",
+        "spanish": "salir con alguien"
+      },
+      {
+        "baseForm": "deliver",
+        "simplePast": "delivered",
+        "pastParticiple": "delivered",
+        "presentParticiple": "delivering",
+        "spanish": "entregar a domicilio"
+      },
+      {
+        "baseForm": "dress",
+        "simplePast": "dressed",
+        "pastParticiple": "dressed",
+        "presentParticiple": "dressing",
+        "spanish": "vestir"
+      },
+      {
+        "baseForm": "dust",
+        "simplePast": "dusted",
+        "pastParticiple": "dusted",
+        "presentParticiple": "dusting",
+        "spanish": "sacudir - desempolvar"
+      },
+      {
+        "baseForm": "end",
+        "simplePast": "ended",
+        "pastParticiple": "ended",
+        "presentParticiple": "ending",
+        "spanish": "terminar"
+      },
+      {
+        "baseForm": "enjoy",
+        "simplePast": "enjoyed",
+        "pastParticiple": "enjoyed",
+        "presentParticiple": "enjoying",
+        "spanish": "disfrutar"
+      },
+      {
+        "baseForm": "enter",
+        "simplePast": "entered",
+        "pastParticiple": "entered",
+        "presentParticiple": "entering",
+        "spanish": "entrar"
+      },
+      {
+        "baseForm": "erase",
+        "simplePast": "erased",
+        "pastParticiple": "erased",
+        "presentParticiple": "ererasing",
+        "spanish": "borrar"
+      },
+      {
+        "baseForm": "fill",
+        "simplePast": "filled",
+        "pastParticiple": "filled",
+        "presentParticiple": "filling",
+        "spanish": "llenar"
+      },
+      {
+        "baseForm": "finish",
+        "simplePast": "finished",
+        "pastParticiple": "finished",
+        "presentParticiple": "finishing",
+        "spanish": "terminar"
+      },
+      {
+        "baseForm": "fire",
+        "simplePast": "fired",
+        "pastParticiple": "fired",
+        "presentParticiple": "firing",
+        "spanish": "despedir - disparar"
+      },
+      {
+        "baseForm": "follow",
+        "simplePast": "followed",
+        "pastParticiple": "followed",
+        "presentParticiple": "following",
+        "spanish": "seguir"
+      },
+      {
+        "baseForm": "help",
+        "simplePast": "helped",
+        "pastParticiple": "helped",
+        "presentParticiple": "helping",
+        "spanish": "ayudar"
+      },
+      {
+        "baseForm": "hire",
+        "simplePast": "hired",
+        "pastParticiple": "hired",
+        "presentParticiple": "firing",
+        "spanish": "contratar"
+      },
+      {
+        "baseForm": "hurry",
+        "simplePast": "hurried",
+        "pastParticiple": "hurried",
+        "presentParticiple": "hurrying",
+        "spanish": "apresurarse"
+      },
+      {
+        "baseForm": "invent",
+        "simplePast": "invented",
+        "pastParticiple": "invented",
+        "presentParticiple": "inviting",
+        "spanish": "inventar"
+      },
+      {
+        "baseForm": "jump",
+        "simplePast": "jumped",
+        "pastParticiple": "jumped",
+        "presentParticiple": "jumping",
+        "spanish": "brincar - saltar"
+      },
+      {
+        "baseForm": "kiss",
+        "simplePast": "kissed",
+        "pastParticiple": "kissed",
+        "presentParticiple": "kissing",
+        "spanish": "besar"
+      },
+      {
+        "baseForm": "learn",
+        "simplePast": "learned",
+        "pastParticiple": "learned",
+        "presentParticiple": "learning",
+        "spanish": "aprender"
+      },
+      {
+        "baseForm": "like",
+        "simplePast": "liked",
+        "pastParticiple": "liked",
+        "presentParticiple": "liking",
+        "spanish": "gustar - simpatizar"
+      },
+      {
+        "baseForm": "listen",
+        "simplePast": "listened",
+        "pastParticiple": "listened",
+        "presentParticiple": "listening",
+        "spanish": "escuchar"
+      },
+      {
+        "baseForm": "live",
+        "simplePast": "lived",
+        "pastParticiple": "lived",
+        "presentParticiple": "living",
+        "spanish": "vivir"
+      }
+
+    ];
+
+    var jump = 7;
+    var size = verbs.length;
+    var outHtml = "";
+    for (var i = 0; i < jump; i++) {
+      outHtml = outHtml
+        + '<button class="button-17" onclick="playTTS(\'' + verbs[i].baseForm + '\',\'en\')">' + verbs[i].baseForm + "</button> "
+        + '<button class="button-17" onclick="playTTS(\'' + verbs[i].simplePast + '\',\'en\')">' + verbs[i].simplePast + "</button> "
+        + '<button class="button-17" onclick="playTTS(\'' + verbs[i].pastParticiple + '\',\'en\')">' + verbs[i].pastParticiple + "</button> "
+        + '<button class="button-17" onclick="playTTS(\'' + verbs[i].presentParticiple + '\',\'en\')">' + verbs[i].presentParticiple + "</button> "
+        + '<button class="button-17" onclick="playTTS(\'' + verbs[i].spanish + '\',\'es\')">' + verbs[i].spanish + "</button> "
+        + '<hr>';
+    }
+    outHtml = outHtml + '<button class="button-17" onclick="next(7,14)">More</button>';
+    document.getElementById("verbs").innerHTML = outHtml;
+
+    const next = (begin, end) => {
+      window.scrollTo(0, 0); //scrolling Top
+      var outHtml = "";
+      var endBK = end;
+      if (end > size) {
+        end = size;
+      }
+      if (begin < size) {
+        //top
+        if (begin > 0) {
+          outHtml = outHtml + '<button class="button-17" onclick="next(' + (begin - jump) + ',' + (endBK - jump) + ')"><</button> ';
+        }
+        outHtml = outHtml + '<button class="button-17" onclick="next(' + (begin + jump) + ',' + (end + jump) + ')">></button>'
+          + '<hr>';
+
+        for (var i = begin; i < end; i++) {
+          outHtml = outHtml
+            + '<button class="button-17" onclick="playTTS(\'' + verbs[i].baseForm + '\',\'en\')">' + verbs[i].baseForm + "</button> "
+            + '<button class="button-17" onclick="playTTS(\'' + verbs[i].simplePast + '\',\'en\')">' + verbs[i].simplePast + "</button> "
+            + '<button class="button-17" onclick="playTTS(\'' + verbs[i].pastParticiple + '\',\'en\')">' + verbs[i].pastParticiple + "</button> "
+            + '<button class="button-17" onclick="playTTS(\'' + verbs[i].presentParticiple + '\',\'en\')">' + verbs[i].presentParticiple + "</button> "
+            + '<button class="button-17" onclick="playTTS(\'' + verbs[i].spanish + '\',\'es\')">' + verbs[i].spanish + "</button> "
+            + '<hr>';
+        }
+        //footer
+        if (begin > 0) {
+          outHtml = outHtml + '<button class="button-17" onclick="next(' + (begin - jump) + ',' + (endBK - jump) + ')">Return</button> ';
+        }
+        outHtml = outHtml + '<button class="button-17" onclick="next(' + (begin + jump) + ',' + (end + jump) + ')">More</button>';
+        document.getElementById("verbs").innerHTML = outHtml;
+      }
+    };
+
+  </script>
+</body>
+
+</html>
